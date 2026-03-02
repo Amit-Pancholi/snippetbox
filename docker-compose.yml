@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    container_name: snippetbox
+    ports:
+      - "${app_port}:${app_port}"
+    command:
+      - "-addr=:${app_port}"
+      - "-dsn=${database_dsn}"
+    restart: unless-stopped
