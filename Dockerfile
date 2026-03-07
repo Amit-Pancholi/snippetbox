@@ -9,7 +9,7 @@ FROM alpine:latest AS worker
 WORKDIR /app
 RUN adduser -D appuser
 COPY --from=builder /app/app .
-COPY --from=builder /app/tls ./tls/
+# COPY --from=builder /app/tls ./tls/
 RUN chown -R appuser:appuser /app
 USER appuser
 EXPOSE 4000
