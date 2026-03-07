@@ -103,7 +103,7 @@ func main() {
 	logger.Info("starting server", "addr", srv.Addr)
 	// Call the ListenAndServe() method on our new http.Server struct to start
 	// the server.
-	err = srv.ListenAndServeTLS("./tls/cert.pem", "./tls/key.pem")
+	err = srv.ListenAndServe()
 
 	logger.Error(err.Error())
 	os.Exit(1)
