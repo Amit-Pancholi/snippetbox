@@ -17,6 +17,7 @@ func newTestDB(t *testing.T) *sql.DB {
 
 	dsn := flag.String("dsn", "", "MySQL data source name")
 	flag.Parse()
+
 	db, err := sql.Open("mysql", *dsn)
 	if err != nil {
 		t.Fatal(err)

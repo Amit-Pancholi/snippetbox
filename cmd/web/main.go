@@ -21,6 +21,7 @@ import (
 	"github.com/alexedwards/scs/v2"
 	"github.com/go-playground/form/v4"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 )
 
 type application struct {
@@ -36,13 +37,19 @@ type application struct {
 }
 
 func main() {
-	addr := flag.String("addr", ":4000", "HTTP network address")
-	dsn := flag.String("dsn", "", "MySQL data source name")
-	debug := flag.Bool("debug", false, "Enable debug mode")
-	flag.Parse()
 	logger := slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
 		AddSource: true,
 	}))
+	err := godotenv.Load()
+	if err != nil {
+		logger.Error("env file not found")
+	}
+	defaultPort := os.Getenv("port")
+	defaultDsn := os.Getenv("base_dsn")
+	addr := flag.String("addr", ":"+defaultPort, "HTTP network address")
+	dsn := flag.String("dsn", defaultDsn, "MySQL data source name")
+	debug := flag.Bool("debug", false, "Enable debug mode")
+	flag.Parse()
 
 	log.Println(dsn)
 
