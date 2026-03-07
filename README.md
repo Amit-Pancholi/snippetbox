@@ -112,8 +112,8 @@ we can also use .env file for passing secret
 create .env file at Snippetbox/cmd/web with
 
 ```.env
-port=4000
-base_dsn= "user:password@tcp(host:3306)/snippetbox?parseTime=true"
+app_port=4000
+database_dsn= "user:password@tcp(host:3306)/snippetbox?parseTime=true"
 
 ```
 

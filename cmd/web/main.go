@@ -44,8 +44,8 @@ func main() {
 	if err != nil {
 		logger.Error("env file not found")
 	}
-	defaultPort := os.Getenv("port")
-	defaultDsn := os.Getenv("base_dsn")
+	defaultPort := os.Getenv("app_port")
+	defaultDsn := os.Getenv("database_dsn")
 	addr := flag.String("addr", ":"+defaultPort, "HTTP network address")
 	dsn := flag.String("dsn", defaultDsn, "MySQL data source name")
 	debug := flag.Bool("debug", false, "Enable debug mode")
